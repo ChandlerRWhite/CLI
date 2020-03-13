@@ -54,4 +54,86 @@ Wildcard Matching
 
 Part III Searching
 
+  find STARTDIR -name WILDCARD -print
+  $ cd temp
+  $ find . -name "*.txt" -print
+  $ cd .. 
+  $ find . -name "*.txt" -print | less
+  $ cd ..
+  $ find . -name "*.txt" -print | less
+  
+1. First go to temp directory
+2. Plain find from there for not too many .txt files. 
+  "Hey find, start here (.) then find files named "*.txt" and print them"
+3. Next go up one directory and do the same command, but this time I pipe the output to less. THis command could run for awhile, so be patient. 
+4. Do this again, but this one could take a really long time. 
+  Hit control^-c to abort it. 
 
+cat > somefile.txt
+  "close" the file with control^-d
+
+grep searches for different words inside certain files.
+e.g. grep old *.txt (find "old" in files ending in .txt, can also pass strings with "old guy" with quotes)
+grep -i ignores upper / lower case
+
+man
+apropos
+  Look through all the help files and find potentially relevant help for you
+
+$ env
+  TERM_PROGRAM=Apple_Terminal
+  TERM=xterm
+  SHELL=/bin/bash 
+  OLDPWD=/Users/zed/temp
+  USER=zed
+  COMMAND_MODE=unix2003 
+  PATH=/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin 
+  PWD=/Users/zed/
+  LANG=en_US.UTF-8
+  PS1=$ 
+  SHLVL=1
+  HOME=/Users/zed 
+  LOGNAME=zed
+  _=/usr/bin/env
+  $ env | grep zed
+  OLDPWD=/Users/zed//temp 
+  USER=zed
+  PWD=/Users/zed/
+  HOME=/Users/zed
+  LOGNAME=zed
+  $ echo $USER 
+  zed
+  $ echo $PWD
+  /Users/zed/
+  $ export TESTING="1 2 3" 
+  $ echo $TESTING
+  1 2 3
+  $ env | grep TESTING
+  TESTING=1 2 3
+  $
+
+"Your shell has these "hidden variables" that can change how other programs work. In this exercise I first print out my environment, just dumping it to the screen. Then I do it again but pipe it through grep to find only the variables with my username in them. Finally, I set an environment variable TESTING to "1 2 3".
+You may not run into this too often, but sometimes to get something configured you have to change these. A good example is the PATH variable, which determines the search order for other commands. Changing your PATH is going to be one of your exercises."
+
+env (environment)
+
+How to change the path
+https://kb.iu.edu/d/acar
+
+ $ export TESTING="bada bada bing"
+  $ echo $TESTING
+  bada bada bing 
+  $ unset TESTING
+  $ echo $TESTING
+  
+  $ env | grep TESTING
+  $
+  
+  You can also change an environment variable to something else, as well as unset it so it isn't in your environment at all. You can't set an environment variable to nothing ("") to remove it. You have to use a command.
+
+exit
+
+xargs
+sudo
+chmod
+chown
